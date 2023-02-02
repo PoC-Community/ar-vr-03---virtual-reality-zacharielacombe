@@ -6,11 +6,14 @@ public class spawn : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject target;
+    bool isRunning = false;
 
     IEnumerator StartSpawning()
     {
-        Instantiate(target, spawnPoints[Random.Range(0, spawnPoints.Length - 1)]);
-        yield return new WaitForSeconds(4);
+        isRunning = true;
+        Instantiate(target, spawnPoints[Random.Range(0, spawnPoints.Length)]);
+        yield return new WaitForSeconds(4.0f);
+        isRunning = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(StartSpawning());
+        if (!isRunning)
+            StartCoroutine(StartSpawning());
     }
 }
