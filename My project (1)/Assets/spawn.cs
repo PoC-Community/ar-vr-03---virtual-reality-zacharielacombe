@@ -5,7 +5,7 @@ using UnityEngine;
 public class spawn : MonoBehaviour
 {
     public Transform[] spawnPoints;
-    GameObject target;
+    public GameObject target;
 
     IEnumerator StartSpawning()
     {
